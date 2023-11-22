@@ -3,9 +3,39 @@
 #include <unordered_map>
 using namespace std;
 
+void swapLongest(string &longestPrefix, string &nextPrefix)
+{
+    string temp;
+    for (int x = 0; x < nextPrefix.size(); x += 1)
+    {
+        if (longestPrefix[x] == nextPrefix[x])
+        {
+            temp += longestPrefix[x];
+        }
+        else
+        {
+            break;
+        }
+    }
+    longestPrefix = temp;
+};
 class Solution
 {
 public:
+    string longestCommonPrefixBruteforceHorizontal(vector<string> &strs)
+
+    {
+
+        // slower solution
+        string firstIndex = strs[0];
+
+        for (int x = 1; x < strs.size(); x++)
+        {
+            swapLongest(firstIndex, strs[x]);
+        }
+        return firstIndex;
+    };
+
     string longestCommonPrefix(vector<string> &strs)
 
     {
@@ -71,12 +101,15 @@ int main()
     vector<string> strs = {
         "carss",
         "car",
-        "cccw",
+        "ccccw",
     };
     // string result = solution.longestCommonPrefixMostGoodApproch(strs);
     // cout << "ans : " << result << endl;
 
-    string result = solution.longestCommonPrefix(strs);
-    cout << " : " << result << endl;
+    // string result = solution.longestCommonPrefix(strs);
+    // cout << " : " << result << endl;
+
+    string result = solution.longestCommonPrefixBruteforceHorizontal(strs);
+    cout << result << endl;
     return 0;
 }
