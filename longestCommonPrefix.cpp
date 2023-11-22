@@ -6,7 +6,41 @@ using namespace std;
 class Solution
 {
 public:
-       string longestCommonPrefixMostGoodApproch(vector<string> &strs)
+    string longestCommonPrefix(vector<string> &strs)
+
+    {
+        // vertical method
+
+        string firstIndex = strs[0];
+        string prefix = "";
+
+        for (int c = 0; c < firstIndex.size(); c++)
+        {
+
+            char character = firstIndex[c];
+
+            for (int x = 1; x < strs.size(); x++)
+            {
+                cout << character << " " << strs[x][c] << endl;
+                // character strs[x][x]
+                // "cars",
+                // "car",
+                // "cccw",
+                // c c
+                // c c
+                // a a
+                // a c
+
+                if (character != strs[x][c])
+                    return prefix;
+            }
+
+            prefix += character;
+        }
+
+        return prefix;
+    };
+    string longestCommonPrefixMostGoodApproch(vector<string> &strs)
 
     {
 
@@ -35,14 +69,14 @@ int main()
 
     Solution solution;
     vector<string> strs = {
-        "cars",
+        "carss",
         "car",
-        "ccw",
+        "cccw",
     };
-    string result = solution.longestCommonPrefixMostGoodApproch(strs);
-    cout << "ans : " << result << endl;
+    // string result = solution.longestCommonPrefixMostGoodApproch(strs);
+    // cout << "ans : " << result << endl;
 
-    // string result = solution.longestCommonPrefix(strs);
-    // cout << " : " << result << endl;
+    string result = solution.longestCommonPrefix(strs);
+    cout << " : " << result << endl;
     return 0;
 }
