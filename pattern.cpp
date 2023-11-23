@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-void pattern(int n)
+void pattern2(int n)
 {
 
     // *
@@ -15,6 +15,7 @@ void pattern(int n)
     // third row has 3 col
     // four row has 4 col;
 
+    cout << endl;
     for (int row = 1; row <= n; row++)
     {
 
@@ -27,9 +28,35 @@ void pattern(int n)
     }
 }
 
+void pattern1(int n)
+{
+    cout << endl;
+
+    // * * * *
+    // * * * *
+    // * * * *
+    // * * * *
+    // first row have 1 col
+    // second row has 2 col
+    // third row has 3 col
+    // four row has 4 col;
+
+    for (int row = 1; row <= n; row++)
+    {
+
+        for (int col = 1; col <= n; col++)
+        {
+
+            cout << "* ";
+        }
+        cout << endl;
+    }
+}
+
 int main()
 {
 
-    pattern(4);
+    pattern2(4);
+    pattern2(4);
     return 0;
 }
