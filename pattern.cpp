@@ -56,7 +56,7 @@ void pattern1(int n)
 int main()
 {
 
-    pattern2(4);
+    pattern1(4);
     pattern2(4);
     return 0;
 }
