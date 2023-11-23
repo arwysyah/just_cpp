@@ -96,12 +96,40 @@ void pattern4(int n)
         for (int col = 1; col <= row; col++)
         {
 
-            cout << col;
+            cout << col << " ";
         }
         cout << endl;
     }
 }
 
+void pattern5(int n)
+{
+    cout << endl;
+    // *
+    // * *
+    // * * *
+    // * * * *
+    // * * *
+    // * *
+    // *
+
+    //   number of column are 4;
+    //   numbeof row = 7;
+    //   row = 2 * n -1
+    //   col = row > n ? n -(row-n) : row
+
+    for (int row = 1; row <= (2 * n - 1); row++)
+    {
+        int columns = row < n ? row : n - (row - n);
+
+        for (int col = 1; col <= columns; col++)
+        {
+
+            cout << "* ";
+        }
+        cout << endl;
+    }
+}
 int main()
 {
 
@@ -109,5 +137,6 @@ int main()
     pattern2(4);
     pattern3(4);
     pattern4(4);
+    pattern5(4);
     return 0;
 }
