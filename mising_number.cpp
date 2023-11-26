@@ -33,12 +33,12 @@
 #include <vector>
 using namespace std;
 
-void swap(vector<int> &nums, int &value, int &index)
+void swap(vector<int> &nums, int &first, int &second)
 {
 
-    // int temp = nums[value]; // 3
-    nums[index] = nums[value];
-    nums[value] = value;
+    int temps = nums[first];
+    nums[first] = nums[second];
+    nums[second] = temps;
 };
 
 class Solution
@@ -48,37 +48,27 @@ public:
 
     {
 
-        // we
         int pointer = 0;
         while (pointer < nums.size())
         {
-            int correctIndex = pointer;
-
-            int value = nums[pointer];
-            if (nums[pointer] <= nums.size())
+            int correctIndex = nums[pointer];
+            // check if arr[pointer] are equal to the position it should be
+            if (nums[pointer] < nums.size() && nums[pointer] != nums[correctIndex])
             {
-                pointer += 1;
-            }
-            else if (nums[pointer] != pointer)
-            {
-                // return 1;
-                swap(nums, value, correctIndex);
-                pointer++;
-            }
-              }
-
-        // 0, 1, 3 === > find if there is missing index if not return index
-        for (int i = 0; i < nums.size(); i++)
-        {
-
-            cout << nums[i];
-            if (i != nums[i] && i < nums.size())
-            {
-                return i;
+                swap(nums, pointer, correctIndex);
             }
             else
             {
-                return nums.size();
+                pointer++;
+            }
+        }
+        for (int i = 0; i < nums.size(); i++)
+        {
+            // cout << nums[i] << endl;
+
+            if (i != nums[i])
+            {
+                return i;
             }
         }
 
@@ -89,7 +79,12 @@ int main()
 {
     Solution solution;
 
-    vector<int> arr = {3, 0, 1};
+    vector<int> arr = {
+        3,
+        0,
+        2,
+        1,
+        4};
     int missing = solution.missingNumber(arr);
     cout << missing << endl;
 
