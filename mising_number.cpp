@@ -33,7 +33,7 @@
 #include <vector>
 using namespace std;
 
-void swap(vector<int> &nums, int &first, int &second)
+void swap(vector<int> &nums, const int &first, const int &second)
 {
 
     int temps = nums[first];
