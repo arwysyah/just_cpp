@@ -27,7 +27,7 @@ int firstCharLen = firstChar.size()-1;
       char focused = element[0];
       string rowKeyBoard = "";
       int pos = all_words.find(tolower(focused));
-      if(pos >=0 && pos < firstCharLen){
+      if(pos >=0 && pos <= firstCharLen){
         rowKeyBoard = firstChar;
       }  else if(pos > firstCharLen && pos < limitSecondChar){
         rowKeyBoard= secondChar;
