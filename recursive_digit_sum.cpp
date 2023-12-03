@@ -1,6 +1,4 @@
 #include <iostream>
-#include <istream>
-
 using namespace std;
 
 string lenSum(string n)
