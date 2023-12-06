@@ -28,18 +28,20 @@ class Solution {
   public:
   void moveZeroes(vector<int> &nums){
   
-    int len = 0; 
-
     int pointer = 0;
 
     while(pointer < nums.size()-1 ){
-        if(nums[len] == 0){
-        nums.push_back(nums[len]);
-         nums.erase(nums.begin()+len);
+        if(nums[pointer] == 0){
+        nums.push_back(nums[pointer]);
+        pointer++;
+        int min = pointer -1;
+        cout << min << "Min "<< endl;
+        nums.erase(nums.begin()+ min);
+      
+
       }else{
-        len ++;
+        pointer++;
       }
-      pointer+=1;
     }
     
     
