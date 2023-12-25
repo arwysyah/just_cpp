@@ -9,8 +9,6 @@ public:
       return true;
     }
     int currentNumber = x;
-    int isFactorial = currentNumber % 2;
-    /*  cout << "Factorial " << isFactorial << endl; */
     while (currentNumber / 2 > 0 && currentNumber % 2 == 0) {
       currentNumber = currentNumber / 2;
       cout << "Current " << currentNumber << endl;
