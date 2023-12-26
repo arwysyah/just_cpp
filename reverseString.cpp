@@ -15,6 +15,18 @@ public:
       // s[x] = s[size - x];
     }
   }
+
+  void reverseString2(vector<char> &s) {
+    int left = 0;
+    int right = s.size() - 1;
+
+    while (left < right) {
+      swap(s[left], s[right]);
+
+      left++;
+      right--;
+    }
+  }
 };
 
 void display(vector<char> arr) {
@@ -27,7 +39,7 @@ int main() {
   Solution solution;
   vector<char> chars = {'h', 'e', 'l', 'l', 'o'};
 
-  solution.reverseString(chars);
+  solution.reverseString2(chars);
   display(chars);
 
   return 0;
