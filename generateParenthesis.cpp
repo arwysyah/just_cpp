@@ -35,11 +35,31 @@ private:
     createParenthesis(result, parenthesis + ")", left, right - 1);
   }
 
+  void generateParenthesesOptimumWay(int n, int openCount, int closeCount,
+                                     std::string current,
+                                     std::vector<std::string> &result) {
+    if (openCount == n && closeCount == n) {
+      result.push_back(current);
+      return;
+    }
+
+    if (openCount < n) {
+      generateParenthesesOptimumWay(n, openCount + 1, closeCount, current + '(',
+                                    result);
+    }
+
+    if (closeCount < openCount) {
+      generateParenthesesOptimumWay(n, openCount, closeCount + 1, current + ')',
+                                    result);
+    }
+  }
+
 public:
   vector<string> generateParenthesis(int n) {
     vector<string> result = {};
+    generateParenthesesOptimumWay(n, 0, 0, "", result);
 
-    createParenthesis(result, "", n, n);
+    // createParenthesis(result, "", n, n);
     return result;
   }
 };
@@ -53,7 +73,7 @@ void display(vector<string> parenthesisArr) {
 int main() {
 
   Solution solution;
-  int nOfNumbers = 3;
+  int nOfNumbers = 8;
   vector<string> res = solution.generateParenthesis(nOfNumbers);
   display(res);
 
