@@ -1,4 +1,6 @@
+#include <ios>
 #include <iostream>
+
 #include <vector>
 
 using namespace std;
@@ -15,24 +17,22 @@ struct TreeNode {
       : val(val), left(left), right(right) {} /* ; */
 };
 
+bool isMirrorCheck(TreeNode *left, TreeNode *right) {
+
+  if (left == nullptr || right == nullptr)
+    return left == right;
+  if (left->val != right->val)
+    return false;
+
+  return isMirrorCheck(left->left, right->right) &&
+         isMirrorCheck(left->right, right->left);
+}
+
 class Solution {
 public:
-  bool isSymetric(TreeNode *root, int left = 0, int right = 0) {
-    if (!root)
-      return false;
-    if (!root->left)
-      return false;
-    if (!root->right)
-      return false;
-    cout << "left :" << root->left->val << "  "
-         << " right" << root->right->val << endl;
+  bool isSymetric(TreeNode *root, int lefts = 0, int rights = 0) {
 
-    cout << "MY KEFT" << left << "  MYRIGHT" << right << endl;
-
-    return isSymetric(root->left, left = left) ==
-           isSymetric(root->right, right = right);
-
-    return false;
+    return root == NULL || isMirrorCheck(root->left, root->right);
   }
 };
 
@@ -58,7 +58,7 @@ void pushNode(TreeNode *node) {
 
 int main() {
   Solution solution;
-  vector<int> nums = {1, 2, 2, 3, 4, 4, 3};
+  vector<int> nums = {1, 2, 2, 3, 4, 4, 2};
   TreeNode *head = new TreeNode(nums[0]);
   TreeNode *ab = new TreeNode(2);
   TreeNode *ac = new TreeNode(2);
