@@ -1,0 +1,50 @@
+#include <iostream>
+#include <utility>
+#include <vector>
+using namespace std;
+
+void generatePermutation(vector<int> arr, int left, int right,
+                         vector<vector<int>> res) {
+
+  for (int x = 0; x < arr.size(); x++) {
+    swap(arr[x], arr[left]);
+    res.push_back(arr);
+    generatePermutation(arr, left + 1, right, res);
+  }
+}
+class Solution {
+
+public:
+  vector<vector<int>> permutate(vector<int> &nums) {
+    vector<vector<int>> result;
+    if (nums.size() <= 1) {
+      return {nums};
+    }
+
+    for (int x = 0; x < nums.size(); ++x) {
+
+      vector<int> cloned(nums.begin(), nums.end());
+      cloned.erase(cloned.begin() + x);
+      auto res = permutate(cloned);
+      for (int n = 0; n < res.size(); n++) {
+        vector<int> _temp = res[n];
+        _temp.insert(_temp.begin(), nums[x]);
+        result.push_back(_temp);
+      }
+    }
+
+    return result;
+  }
+};
+void display(vector<int> arrs) {
+  for (int i : arrs) {
+    cout << i << endl;
+  }
+}
+int main() {
+
+  Solution s;
+  vector<int> exa = {1, 2, 3};
+  vector<vector<int>> res = s.permutate(exa);
+  cout << res.size() << endl;
+}
